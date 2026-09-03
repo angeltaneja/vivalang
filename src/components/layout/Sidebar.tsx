@@ -31,6 +31,7 @@ export function Sidebar() {
     { label: ui.notes, href: '/notes', icon: FileText },
     { label: ui.progress, href: '/progress', icon: BarChart3 },
     { label: ui.profile, href: '/profile', icon: User },
+    { label: 'Project Showcase', href: '/showcase', icon: Sparkles },
   ];
 
   return (
