@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable} dark`}>
-      <body className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white pb-20 lg:pb-0">
+    <html lang="en" className={`${outfit.variable} ${inter.variable} dark`} suppressHydrationWarning>
+      <body className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white pb-20 lg:pb-0" suppressHydrationWarning>
         <AppProvider>
           <Navbar />
           <div className="mx-auto flex max-w-7xl">

@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
 import { FRENCH_LESSONS_UNITS, GERMAN_LESSONS_UNITS } from '@/data/lessonsData';
 import { Exercise } from '@/types';
 import confetti from 'canvas-confetti';
-import { Volume2, CheckCircle2, ArrowRight, XCircle, Sparkles, BookOpen, RotateCw } from 'lucide-react';
+import { Volume2, CheckCircle2, ArrowRight, XCircle, Sparkles, BookOpen, RotateCw, Loader2 } from 'lucide-react';
 
-export default function LessonPage() {
+function LessonContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { currentLanguage, updateStats } = useApp();
@@ -307,5 +307,18 @@ export default function LessonPage() {
       )}
 
     </div>
+  );
+}
+
+export default function LessonPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col items-center justify-center py-20 space-y-3 text-blue-400">
+        <Loader2 className="h-8 w-8 animate-spin" />
+        <p className="text-xs font-semibold">Loading interactive lesson engine...</p>
+      </div>
+    }>
+      <LessonContent />
+    </Suspense>
   );
 }
